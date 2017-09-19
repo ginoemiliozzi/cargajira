@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <img class="col-2 img-height" alt="gplsistemas" src="assets/imgs/logo.png">
+      <h1 class="col-8 text-center">Carga Jira App</h1>
+    </div>
+  </div>
+
+  <ngb-alert *ngIf="!staticAlertClosed" type="success" (close)="staticAlertClosed = true">Horas registradas con éxito!</ngb-alert>
+  <h3 class="text-center fontcustom"> Elija el archivo csv para cargar las horas </h3>
+  <div class="row justify-content-center">
+    <div class="col-6 formcustom">
+
+      <form (ngSubmit)="onSubmit()" #csvForm="ngForm">
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <span class="glyphicon glyphicon-open-file iconlabel"> </span>
+            <input type="file" ng2FileSelect [uploader]="uploader" />
+            <input type="hidden" name="action" value="inicio">
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <button type="submit" class="btn btn-primary btncargar">Cargar archivo</button>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
