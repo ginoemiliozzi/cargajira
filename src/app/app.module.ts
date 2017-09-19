@@ -5,18 +5,38 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JsonpModule } from '@angular/http';
 import { FormcsvComponent } from './formcsv/formcsv.component';
-import {   FileUploadModule } from "ng2-file-upload";
+import { FileUploadModule } from "ng2-file-upload";
+import { RouterModule }   from '@angular/router';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { PreviewTableComponent } from './preview-table/preview-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormcsvComponent
+    FormcsvComponent,
+    PreviewTableComponent
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     FormsModule,
-    FileUploadModule
+    FileUploadModule,
+    Ng2SmartTableModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/formcsv',
+        pathMatch: 'full'
+      },
+      {
+        path:'formcsv',
+        component: FormcsvComponent
+      },
+      {
+        path:'preview',
+        component: PreviewTableComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formcsv',
@@ -9,12 +9,14 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class FormcsvComponent implements OnInit {
   staticAlertClosed = true;
-  public uploader:FileUploader = new FileUploader({url: 'http://localhost:8080/CargaJiraWeb/UploadHandler?action=inicio'});
+  public uploader:FileUploader = new FileUploader({url: 'http://marianob.gpl.com.ar:8080/CargaJiraWeb/UploadHandler?action=inicio'});
   
-  constructor() { }
+  constructor(private router: Router) { }
 
   onSubmit() { 
-    this.uploader.uploadAll();    
+    this.uploader.uploadAll(); 
+    setTimeout(()=> this.router.navigate(['/preview']),3000)
+    ;
    }
 
   ngOnInit() {
